@@ -10,9 +10,8 @@ const StyledApp = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	width: 320px;
-	height: 500px;
 	color: var(--grayish-blue);
-	margin-top: 80px;
+	/* margin-top: 80px; */
 `;
 const StyledHeader = styled.div`
 	display: flex;

@@ -21,8 +21,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/kodjohin/interactive-pricing-component)
-- Live Site URL: [Add live site URL here](https://kodjohin.github.io/interactive-pricing-component/)
+- Solution URL: [solution URL here](https://github.com/kodjohin/interactive-pricing-component)
+- Live Site URL: [live site URL here](https://kodjohin.github.io/interactive-pricing-component/)
 
 ### Built with
 
