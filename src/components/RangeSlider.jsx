@@ -1,13 +1,13 @@
+import { useContext, useEffect } from "react";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { Context } from "../AppState";
 import Slider from "../images/icon-slider.svg";
 
 const StyledRangeSlider = styled.div`
 	--w: ${(props) => props.width}px;
 	--bgcolor: ${(props) => props.bgcolor};
-	--thumb-size: 15px;
+	--thumb-size: 30px;
 
-	/* border: 1px solid pink; */
 	width: var(--w);
 	display: flex;
 	flex-direction: column;
@@ -29,8 +29,8 @@ const StyledRangeSlider = styled.div`
 			background-image: url(${Slider});
 			background-repeat: no-repeat;
 			background-position: center;
-			width: 30px;
-			height: 30px;
+			width: var(--thumb-size);
+			height: var(--thumb-size);
 			border-radius: 50%;
 			box-shadow: 0 0.5em 1em var(--soft-cyan);
 			cursor: pointer;
@@ -62,42 +62,39 @@ const StyledRangeSlider = styled.div`
 `;
 
 const RangeSlider = ({ width, bgcolor }) => {
-	const [value, setValue] = useState(20);
-	const [price, setPrice] = useState(8);
-	const handleChange = (e) => {
-		setValue(parseInt(e.target.value));
-	};
+	const { range, price, billing, setRange, setPrice } = useContext(Context);
+	const handleChange = (e) => setRange(parseInt(e.target.value));
 
 	useEffect(() => {
 		switch (true) {
-			case value < 10:
+			case range < 10:
 				setPrice(8);
 				break;
-			case 10 < value && value < 50:
+			case 10 < range && range < 50:
 				setPrice(12);
 				break;
-			case 50 < value && value < 100:
+			case 50 < range && range < 100:
 				setPrice(16);
 				break;
-			case 100 < value && value < 500:
+			case 100 < range && range < 500:
 				setPrice(24);
 				break;
-			case 500 < value && value < 1000:
+			case 500 < range && range < 1000:
 				setPrice(36);
 				break;
 			default:
 				break;
 		}
-	}, [value]);
+	}, [range, billing]);
 
 	return (
 		<StyledRangeSlider width={width} bgcolor={bgcolor}>
-			<label htmlFor="range-slider">{value}k Pageviews</label>
+			<label htmlFor="range-slider">{range}k Pageviews</label>
 			<input
 				type="range"
 				min="0"
 				max="1000"
-				defaultValue={value}
+				defaultValue={range}
 				step="1"
 				onChange={(e) => handleChange(e)}
 			/>

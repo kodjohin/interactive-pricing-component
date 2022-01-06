@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { Context } from "../AppState";
 
 const StyledToggle = styled.div`
 	--w: ${(props) => props.width}px;
@@ -72,10 +74,14 @@ const StyledToggle = styled.div`
 `;
 
 const ToggleBilling = ({ width, bgcolor }) => {
+	const { setBilling } = useContext(Context);
+	const handleChange = (e) => {
+		setBilling(e.target.checked ? "yearly" : "monthly");
+	};
 	return (
 		<StyledToggle width={width} bgcolor={bgcolor}>
 			<div className="checkbox">
-				<input type="checkbox" />
+				<input type="checkbox" onChange={(e) => handleChange(e)} />
 				<label></label>
 			</div>
 		</StyledToggle>

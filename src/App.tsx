@@ -1,8 +1,9 @@
 import { FC } from "react";
-import "./App.css";
 import styled from "styled-components";
-import ToggleBilling from "./components/ToggleBilling";
+import "./App.css";
+import { AppStateProvider } from "./AppState";
 import RangeSlider from "./components/RangeSlider";
+import ToggleBilling from "./components/ToggleBilling";
 import Check from "./images/icon-check.svg";
 
 const StyledApp = styled.div`
@@ -11,7 +12,6 @@ const StyledApp = styled.div`
 	justify-content: flex-start;
 	width: 320px;
 	color: var(--grayish-blue);
-	/* margin-top: 80px; */
 `;
 const StyledHeader = styled.div`
 	display: flex;
@@ -84,37 +84,40 @@ const StyledToggle = styled.div`
 	align-items: center;
 	font-size: 0.7rem;
 	gap: 10px;
+	padding-bottom: 10px;
 `;
 const App: FC = () => {
 	return (
-		<StyledApp>
-			<StyledHeader>
-				<h3>Simple, traffic-based pricing</h3>
-				<p> Sign-up for our 30-day trial. No credit card required.</p>
-			</StyledHeader>
-			<StyledMain>
-				<RangeSlider width={280} bgcolor={"hsl(227, 35%, 25%)"} />
-				<StyledToggle>
-					<span>Monthly Billing</span>
-					<ToggleBilling width={40} bgcolor={"hsl(227, 35%, 25%)"} />
-					<span>Yearly Billing</span>
-					<span className="chip"> -25%</span>
-				</StyledToggle>
-				<hr />
-				<ul>
-					<li>
-						<span></span>Unlimited websites
-					</li>
-					<li>
-						<span></span>100% data ownership
-					</li>
-					<li>
-						<span></span>Email reports
-					</li>
-				</ul>
-				<button>Start my trial</button>
-			</StyledMain>
-		</StyledApp>
+		<AppStateProvider>
+			<StyledApp>
+				<StyledHeader>
+					<h3>Simple, traffic-based pricing</h3>
+					<p> Sign-up for our 30-day trial. No credit card required.</p>
+				</StyledHeader>
+				<StyledMain>
+					<RangeSlider width={280} bgcolor={"hsl(227, 35%, 25%)"} />
+					<StyledToggle>
+						<span>Monthly Billing</span>
+						<ToggleBilling width={40} bgcolor={"hsl(227, 35%, 25%)"} />
+						<span>Yearly Billing</span>
+						<span className="chip"> -25%</span>
+					</StyledToggle>
+					<hr />
+					<ul>
+						<li>
+							<span></span>Unlimited websites
+						</li>
+						<li>
+							<span></span>100% data ownership
+						</li>
+						<li>
+							<span></span>Email reports
+						</li>
+					</ul>
+					<button>Start my trial</button>
+				</StyledMain>
+			</StyledApp>
+		</AppStateProvider>
 	);
 };
 
