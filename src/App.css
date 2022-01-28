@@ -44,7 +44,7 @@ body {
 		no-repeat url("./images/bg-pattern.svg");
 	box-shadow: 0 0.6em 0.6em var(--light-grayish-blue);
 }
-@media (min-width: 600px) {
+@media (min-width: 1440px) {
 	#root {
 		height: 800px;
 	}

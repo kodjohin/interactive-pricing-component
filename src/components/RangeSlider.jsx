@@ -85,6 +85,7 @@ const RangeSlider = ({ width, bgcolor }) => {
 			default:
 				break;
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [range, billing]);
 
 	return (
