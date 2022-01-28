@@ -11,7 +11,11 @@ const StyledApp = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	width: 320px;
+	gap: 30px;
 	color: var(--grayish-blue);
+	@media (min-width: 600px) {
+		width: 450px;
+	}
 `;
 const StyledHeader = styled.div`
 	display: flex;
@@ -19,7 +23,7 @@ const StyledHeader = styled.div`
 	text-align: center;
 	align-items: center;
 	background: transparent;
-	width: 320px;
+	width: 100%;
 	padding: 20px;
 
 	h3 {
@@ -30,6 +34,10 @@ const StyledHeader = styled.div`
 		font-size: 0.8rem;
 		width: 180px;
 		line-height: 20px;
+		@media (min-width: 600px) {
+			font-size: 0.7rem;
+			width: 400px;
+		}
 	}
 `;
 const StyledMain = styled.main`
@@ -39,7 +47,7 @@ const StyledMain = styled.main`
 	align-items: center;
 	text-align: center;
 	background-color: white;
-	width: 320px;
+	width: 100%;
 	border-radius: 10px;
 	gap: 30px;
 	padding: 30px 0px;
@@ -69,6 +77,9 @@ const StyledMain = styled.main`
 				margin-right: 15px;
 			}
 		}
+		@media (min-width: 600px) {
+			text-align: left;
+		}
 	}
 	.chip {
 		width: 40px;
@@ -86,10 +97,23 @@ const StyledToggle = styled.div`
 	gap: 10px;
 	padding-bottom: 10px;
 `;
+
+const StyledList = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+
+	@media (min-width: 600px) {
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 60px;
+	}
+`;
 const App: FC = () => {
 	return (
 		<AppStateProvider>
-			<StyledApp>
+			<StyledApp className="app">
 				<StyledHeader>
 					<h3>Simple, traffic-based pricing</h3>
 					<p> Sign-up for our 30-day trial. No credit card required.</p>
@@ -103,18 +127,20 @@ const App: FC = () => {
 						<span className="chip"> -25%</span>
 					</StyledToggle>
 					<hr />
-					<ul>
-						<li>
-							<span></span>Unlimited websites
-						</li>
-						<li>
-							<span></span>100% data ownership
-						</li>
-						<li>
-							<span></span>Email reports
-						</li>
-					</ul>
-					<button>Start my trial</button>
+					<StyledList>
+						<ul>
+							<li>
+								<span></span>Unlimited websites
+							</li>
+							<li>
+								<span></span>100% data ownership
+							</li>
+							<li>
+								<span></span>Email reports
+							</li>
+						</ul>
+						<button>Start my trial</button>
+					</StyledList>
 				</StyledMain>
 			</StyledApp>
 		</AppStateProvider>
